@@ -5,7 +5,7 @@ import { TodoList } from "./TodoList";
 import { TodoItem } from "./TodoItem";
 import { CreateTodoButton } from "./CreateTodoButton";
 
-// import './App.css';
+import './App.css';
 const todos = [
   {text: 'cortar Cebolla', completed: false},
   {text: 'Tomar curo react', completed: false},
