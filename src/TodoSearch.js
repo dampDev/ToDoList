@@ -6,7 +6,7 @@ function TodoSearch() {
     return(
         <div className="TodoSearch">
 
-        
+        <img src="./" alt="icon search"/>
         <input className="TodoSearch-input" placeholder="Naranja"/>
         </div>
     )

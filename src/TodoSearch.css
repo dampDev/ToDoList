@@ -1,6 +1,19 @@
-/* .TodoSearch{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: red;
-} */
+:root{
+    --primary: #242F9B;
+    --secundary: #646FD4;
+    --secundary_shades: #9BA3EB;
+    --secundary_tins: #DBDFFD;
+    --white: #FFFFFF;
+    --background: #F6F6F6;
+    --gray_tints: #E7E7E7;
+    --gray_shades: #888888;
+    --grey_middle: #CCCCCC;
+    --black: #363636;
+    --gradiante: radial-gradient(182.5% 182.5% at 120% -82.5%, rgba(255, 255, 255, 0) 0%, #646FD4 97.09%);
+  }
+.TodoSearch-input {
+    background-color: var(--white);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    border: var(--gray_shades);
+}
