@@ -1,9 +1,9 @@
 import React from "react";
-import {CreateTodoButtom} from "./CreateTodoButtom";
-import { TodoCounter } from "./TodoCounter";
-import { TodoItem } from "./TodoItem";
-import { TodoList } from "./TodoList";
-import { TodoSearch } from "./TodoSearch";
+import {CreateTodoButtom} from "../CreateTodoButtom";
+import { TodoCounter } from "../TodoCounter";
+import { TodoItem } from "../TodoItem";
+import { TodoList } from "../TodoList";
+import { TodoSearch } from "../TodoSearch";
 
 // import './App.css';
 
