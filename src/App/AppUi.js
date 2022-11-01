@@ -5,6 +5,7 @@ import { TodoCounter } from "../TodoCounter";
 import { TodoItem } from "../TodoItem";
 import { TodoList } from "../TodoList";
 import { TodoSearch } from "../TodoSearch";
+import { Modal } from "../modal";
 
 function AppUi() {
   const { error, loading,
@@ -34,6 +35,11 @@ function AppUi() {
           />
         ))}
       </TodoList>
+      <modal>
+        <p>
+          Teletransportacion
+        </p>
+      </modal>
 
 
       <CreateTodoButtom />
