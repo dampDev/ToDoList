@@ -1,21 +1,34 @@
 import React from "react";
 import { TodoContext } from "../TodoContext";
 function TodoForm() {
+    const [newTodoValue, setNewTodoValue ] = React.useState('');
     const {
-        saveTodo,
+        addTodo,
+        setOpenModal,
+
 
     }= React.useContext(TodoContext);
 
+    const onChange = (event) =>{
+        setNewTodoValue(event.target.value);
+    };
+
     const onCancel=()=>{
-            
+            setOpenModal(false);
     }
-    const onSutmit=()=>{
-            
+    const onSutmit=(event)=>{
+        event.preventDefault();
+        addTodo(newTodoValue);
+        setOpenModal(false);
+
+
     }
     return(
         <form onSubmit={onSutmit}>
             <label>...</label>
             <textarea
+            value={newTodoValue}
+            onChange={onChange}
             placeholder="Escribe tu tarea"
             />
             <div>
