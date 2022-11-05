@@ -1,12 +1,16 @@
 .TodoListMain{
     display: flex;
     justify-content: center;
+    height: 70vh;
     
 
 }
 .TodoList{
     display: flex;
     flex-direction: column;
-    justify-content:center ;
     padding-left: 0px;
+    overflow-y: scroll;
+    
+    
+
 }

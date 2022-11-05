@@ -1,4 +1,6 @@
 .TodoItem{
+    position: relative;
+    scroll-snap-align: end;
     width: 300px;
     margin-top: 5px;
     display: flex;
