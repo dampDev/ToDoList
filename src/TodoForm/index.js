@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { TodoContext } from "../TodoContext";
+import {DatePicker} from '@material-ui/pickers';
+
 function TodoForm() {
     const [newTodoValue, setNewTodoValue ] = React.useState('');
+    const [fechaSeleccionada, cambiarFechaSeleccionada] = useState(new Date());
+    console.log(fechaSeleccionada);
     const {
         addTodo,
         setOpenModal,
@@ -25,6 +29,8 @@ function TodoForm() {
     }
     return(
         <form onSubmit={onSutmit}>
+            <label>fecha</label>
+            <DatePicker value={fechaSeleccionada} onChange={cambiarFechaSeleccionada}/>
             <label>...</label>
             <textarea
             value={newTodoValue}

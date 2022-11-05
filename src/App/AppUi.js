@@ -7,6 +7,8 @@ import { TodoList } from "../TodoList";
 import { TodoSearch } from "../TodoSearch";
 import { Modal } from "../modal";
 import { TodoForm } from "../TodoForm";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import DateFnsUtils from '@date-io/date-fns';
 
 function AppUi() {
   const { 
@@ -42,7 +44,10 @@ function AppUi() {
       </TodoList>
       {!!openModal && (
         <Modal>
-        <TodoForm/>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <TodoForm/>
+          </MuiPickersUtilsProvider>
+        
       </Modal>
       )}
 
