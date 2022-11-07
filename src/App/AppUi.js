@@ -11,8 +11,8 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 
 function AppUi() {
-  const { 
-    error, 
+  const {
+    error,
     loading,
     searchedTodos,
     completeTodo,
@@ -21,39 +21,79 @@ function AppUi() {
     setOpenModal
   } = React.useContext(TodoContext);
 
+  const [showAll, setShowAll] = React.useState(true);
+  const handleShowAll = () => {
+    setShowAll(() => !showAll)
+  }
+
   return (
     <React.Fragment>
       <TodoCounter />
       <TodoSearch />
-
+      <button onClick={handleShowAll} >
+        {showAll ? "mostrar completados" : "Mostrar Todos"}
+      </button>
       <TodoList>
         {error && <p>Hubo un error...</p>}
         {loading && <p>Loading, Plase weit...</p>}
         {(!loading && !searchedTodos.length) && <p>!Crea un Todo</p>}
 
-        {searchedTodos.map(todo => (
-          <TodoItem
-            key={todo.text}
-            text={todo.text}
-            completed={todo.completed}
-            onComplete={() => completeTodo(todo.text)}
-            onDelete={() => deleteTodo(todo.text)}
-
-          />
-        ))}
+        {searchedTodos
+          
+          .filter(todo => {
+            
+            if (showAll === true) {
+              return todo.completed === false;
+          }
+          })
+          .map(todo => (
+            <TodoItem
+              key={todo.text}
+              text={todo.text}
+              completed={todo.completed}
+              onComplete={() => completeTodo(todo.text)}
+              onDelete={() => deleteTodo(todo.text)}
+            />
+          ))}
       </TodoList>
+      <TodoList>
+        {error && <p>Hubo un error...</p>}
+        {loading && <p>Loading, Plase weit...</p>}
+        {(!loading && !searchedTodos.length) && <p>!Crea un Todo</p>}
+
+        {searchedTodos
+          
+          .filter(todo => {
+            
+            if (showAll === true) {
+              return todo.completed === true;
+              
+           }
+          })
+          .map(todo => (
+            <TodoItem
+              key={todo.text}
+              text={todo.text}
+              completed={todo.completed}
+              onComplete={() => completeTodo(todo.text)}
+              onDelete={() => deleteTodo(todo.text)}
+            />
+          ))}
+      </TodoList>
+
+
       {!!openModal && (
         <Modal>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <TodoForm/>
+            <TodoForm />
           </MuiPickersUtilsProvider>
-        
-      </Modal>
+
+        </Modal>
       )}
 
 
-      <CreateTodoButtom 
-      setOpenModal={setOpenModal}
+      <CreateTodoButtom
+        setOpenModal={setOpenModal}
       />
     </React.Fragment>
   );
