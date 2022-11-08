@@ -31,8 +31,9 @@ function AppUi() {
       <TodoCounter />
       <TodoSearch />
       <button onClick={handleShowAll} >
-        {showAll ? "mostrar completados" : "Mostrar Todos"}
+        {showAll ? "mostrar completados" : "Mostrar No Todos"}
       </button>
+      
       <TodoList>
         {error && <p>Hubo un error...</p>}
         {loading && <p>Loading, Plase weit...</p>}
@@ -42,32 +43,11 @@ function AppUi() {
           
           .filter(todo => {
             
-            if (showAll === true) {
-              return todo.completed === false;
-          }
-          })
-          .map(todo => (
-            <TodoItem
-              key={todo.text}
-              text={todo.text}
-              completed={todo.completed}
-              onComplete={() => completeTodo(todo.text)}
-              onDelete={() => deleteTodo(todo.text)}
-            />
-          ))}
-      </TodoList>
-      <TodoList>
-        {error && <p>Hubo un error...</p>}
-        {loading && <p>Loading, Plase weit...</p>}
-        {(!loading && !searchedTodos.length) && <p>!Crea un Todo</p>}
-
-        {searchedTodos
-          
-          .filter(todo => {
-            
-            if (showAll === true) {
+            if (showAll === false) {
               return todo.completed === true;
               
+           }else{
+            return todo.completed === false;
            }
           })
           .map(todo => (

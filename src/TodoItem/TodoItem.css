@@ -1,7 +1,7 @@
 .TodoItem{
     position: relative;
     scroll-snap-align: end;
-    width: 300px;
+    width: 100%;
     margin-top: 5px;
     display: flex;
     justify-content: space-between;

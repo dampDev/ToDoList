@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     height: 70vh;
-    
+    width: 100%;
 
 }
 .TodoList{
@@ -10,7 +10,7 @@
     flex-direction: column;
     padding-left: 0px;
     overflow-y: scroll;
-    
+    width: 95%;
     
 
 }
