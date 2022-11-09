@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
+
 const TodoContext = React.createContext();
 
 function TodoProvider(props){
@@ -31,10 +32,11 @@ const{
       
     }
   
-    const addTodo = (text) => {
+    const addTodo = (fecha,text,) => {
       const newTodos = [...todos];
       newTodos.push({
         completed: false,
+        date: fecha,
         text,
       });
       saveTodos(newTodos);

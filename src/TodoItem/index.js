@@ -20,6 +20,7 @@ function TodoItem(props) {
             >
                 X
             </span>
+            <p>{props.date}</p>
         </li>
     );
     

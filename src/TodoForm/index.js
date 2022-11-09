@@ -22,7 +22,7 @@ function TodoForm() {
     }
     const onSutmit=(event)=>{
         event.preventDefault();
-        addTodo(newTodoValue);
+        addTodo(fechaSeleccionada, newTodoValue);
         setOpenModal(false);
 
 
