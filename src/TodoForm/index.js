@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { TodoContext } from "../TodoContext";
 import {DatePicker} from '@material-ui/pickers';
 
+
 function TodoForm() {
     const [newTodoValue, setNewTodoValue ] = React.useState('');
     const [fechaSeleccionada, cambiarFechaSeleccionada] = useState(new Date());
-    console.log(fechaSeleccionada);
+    
     const {
         addTodo,
         setOpenModal,
@@ -22,7 +23,7 @@ function TodoForm() {
     }
     const onSutmit=(event)=>{
         event.preventDefault();
-        addTodo(fechaSeleccionada, newTodoValue);
+        addTodo(fechaSeleccionada.toLocaleDateString(), newTodoValue);
         setOpenModal(false);
 
 

@@ -9,6 +9,8 @@ import { Modal } from "../modal";
 import { TodoForm } from "../TodoForm";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
+import esLocale from 'date-fns/locale/es';
+import { alpha } from '@material-ui/core/styles'
 
 function AppUi() {
   const {
@@ -65,7 +67,7 @@ function AppUi() {
 
       {!!openModal && (
         <Modal>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale} style={alpha}>
             <TodoForm />
           </MuiPickersUtilsProvider>
 
