@@ -12,15 +12,19 @@ function TodoItem(props) {
             >
                 c
             </span>
+            <div>
             <p className={`TodoItem-p ${props.completed && 'TodoItem-p--completed'}`}>
                 {props.text}
             </p>
+            <p>{props.date}</p>
+            </div>
+            
             <span className="Icon Icon-delete"
             onClick={props.onDelete}
             >
                 X
             </span>
-            <p>{props.date}</p>
+            
         </li>
     );
     

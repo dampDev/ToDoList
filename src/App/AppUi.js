@@ -35,6 +35,14 @@ function AppUi() {
       <button onClick={handleShowAll} >
         {showAll ? "mostrar completados" : "Mostrar No Todos"}
       </button>
+      {!!openModal && (
+        <Modal>
+          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale} style={alpha}>
+            <TodoForm />
+          </MuiPickersUtilsProvider>
+
+        </Modal>
+      )}
       
       <TodoList>
         {error && <p>Hubo un error...</p>}
@@ -65,14 +73,7 @@ function AppUi() {
       </TodoList>
 
 
-      {!!openModal && (
-        <Modal>
-          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale} style={alpha}>
-            <TodoForm />
-          </MuiPickersUtilsProvider>
-
-        </Modal>
-      )}
+      
 
 
       <CreateTodoButtom
