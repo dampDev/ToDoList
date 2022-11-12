@@ -1,6 +1,7 @@
 import React from "react";
 import { TodoContext } from "../TodoContext";
 import { CreateTodoButtom } from "../CreateTodoButtom";
+import { TodoHeader } from "../TodoHeader";
 import { TodoCounter } from "../TodoCounter";
 import { TodoItem } from "../TodoItem";
 import { TodoList } from "../TodoList";
@@ -20,7 +21,11 @@ function AppUi() {
     completeTodo,
     deleteTodo,
     openModal,
-    setOpenModal
+    setOpenModal,
+    totalTodos,
+    completedTodos,
+    searchValue, 
+    setSearchValue
   } = React.useContext(TodoContext);
 
   const [showAll, setShowAll] = React.useState(true);
@@ -30,8 +35,16 @@ function AppUi() {
 
   return (
     <React.Fragment>
-      <TodoCounter />
-      <TodoSearch />
+     <TodoHeader>
+     <TodoCounter 
+      totalTodos={totalTodos}
+      completedTodos={completedTodos}
+      />
+      <TodoSearch 
+      searchValue={searchValue} 
+      setSearchValue={setSearchValue}
+      />
+     </TodoHeader>
       <button onClick={handleShowAll} >
         {showAll ? "mostrar completados" : "Mostrar No Todos"}
       </button>
