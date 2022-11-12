@@ -12,11 +12,11 @@ function TodoItem(props) {
             >
                 c
             </span>
-            <div>
+            <div className="TodoItem--content">
             <p className={`TodoItem-p ${props.completed && 'TodoItem-p--completed'}`}>
                 {props.text}
             </p>
-            <p>{props.date}</p>
+            <p className="TodoItem-date">{props.date}</p>
             </div>
             
             <span className="Icon Icon-delete"
