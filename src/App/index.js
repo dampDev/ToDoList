@@ -3,9 +3,9 @@ import { useTodos } from "./useTodos";
 import { CreateTodoButtom } from "../CreateTodoButtom";
 import { TodoHeader } from "../TodoHeader";
 import { TodoCounter } from "../TodoCounter";
-import {TodosLoading} from "../TodosLoading"
-import {TodosError} from "../TodosError"
-import {EmptyTodos} from "../EmptyTodos"
+import { TodosLoading } from "../TodosLoading"
+import { TodosError } from "../TodosError"
+import { EmptyTodos } from "../EmptyTodos"
 import { TodoItem } from "../TodoItem";
 import { TodoList } from "../TodoList";
 import { TodoSearch } from "../TodoSearch";
@@ -16,7 +16,8 @@ import DateFnsUtils from '@date-io/date-fns';
 import esLocale from 'date-fns/locale/es';
 import { alpha } from '@material-ui/core/styles'
 
-// import './App.css';
+import '../index.css';
+import './App.css';
 
 // const defaultTodos = [
 // {text: 'reparar pc', completed: true},
@@ -27,9 +28,9 @@ import { alpha } from '@material-ui/core/styles'
 
 
 
- 
 
- 
+
+
 
 function App(props) {
   const {
@@ -42,7 +43,7 @@ function App(props) {
     setOpenModal,
     totalTodos,
     completedTodos,
-    searchValue, 
+    searchValue,
     setSearchValue,
     addTodo,
   } = useTodos();
@@ -56,56 +57,61 @@ function App(props) {
 
   return (
     <React.Fragment>
-     <TodoHeader>
-     <TodoCounter 
-      totalTodos={totalTodos}
-      completedTodos={completedTodos}
-      />
-      <TodoSearch 
-      searchValue={searchValue} 
-      setSearchValue={setSearchValue}
-      />
-     </TodoHeader>
+      <h1 className="text-3xl font-bold underline bg-red-400">
+      Hello world !
+    </h1>
+      <TodoHeader>
+        <TodoCounter
+          totalTodos={totalTodos}
+          completedTodos={completedTodos}
+        />
+        <TodoSearch
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
+      </TodoHeader>
       <button onClick={handleShowAll} >
         {showAll ? "mostrar completados" : "Mostrar No Todos"}
       </button>
       {!!openModal && (
         <Modal>
           <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale} style={alpha}>
-            <TodoForm 
-            addTodo={addTodo}
-            setOpenModal={setOpenModal}
+            <TodoForm
+              addTodo={addTodo}
+              setOpenModal={setOpenModal}
             />
           </MuiPickersUtilsProvider>
 
         </Modal>
       )}
-      
+
       <TodoList
-    error={error}
-    loading={loading}
-    searchedTodos={searchedTodos}
+        error={error}
+        loading={loading}
+        searchedTodos={searchedTodos}
+        onError={() => <TodosError />}
+        onLoading={() => <TodosLoading />}
+        onEmptyTodos={() => <EmptyTodos />}
+        onEmptySearchResult={()=> 
+          (searchText) =><p>no hay resultados para {searchText}</p>
+        }
 
+        render={todo => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            date={todo.date}
+            completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        )
 
-      onError={()=> <TodosError/>}
-      onLoading={()=> <TodosLoading/>}
-      onEmptyTodos={()=> <EmptyTodos/>}
-      render={todo => (
-        <TodoItem
-          key={todo.text}
-          text={todo.text}
-          date={todo.date}
-          completed={todo.completed}
-          onComplete={() => completeTodo(todo.text)}
-          onDelete={() => deleteTodo(todo.text)}
-        />
-      )
-
-      }
+        }
 
       />
 
-      
+
 
       {/* <TodoList>
         {error && <p>Hubo un error...</p>}
@@ -136,7 +142,7 @@ function App(props) {
       </TodoList> */}
 
 
-      
+
 
 
       <CreateTodoButtom
@@ -144,7 +150,7 @@ function App(props) {
       />
     </React.Fragment>
   );
-    
+
 }
 
 export default App;
