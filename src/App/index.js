@@ -57,21 +57,24 @@ function App(props) {
 
   return (
     <React.Fragment>
-      <h1 className="text-3xl font-bold underline bg-red-400">
+      <h1 className="text-1xl font-bold bg-red-500 text-orange-600">
       Hello world !
     </h1>
     <Example/>
-      <TodoHeader>
+      <TodoHeader  loading={loading}>
         <TodoCounter
           totalTodos={totalTodos}
           completedTodos={completedTodos}
+          // loading={loading}
+
         />
         <TodoSearch
           searchValue={searchValue}
           setSearchValue={setSearchValue}
+          // loading={loading}
         />
       </TodoHeader>
-      <button onClick={handleShowAll} >
+      <button onClick={handleShowAll} className="rounded-xl h-7 text-orange-600	 bg-sky-500 hover:bg-sky-700">
         {showAll ? "mostrar completados" : "Mostrar No Todos"}
       </button>
       {!!openModal && (
@@ -90,28 +93,34 @@ function App(props) {
         error={error}
         loading={loading}
         searchedTodos={searchedTodos}
+        totalTodos={totalTodos}
+        searchText={searchValue}
         onError={() => <TodosError />}
         onLoading={() => <TodosLoading />}
         onEmptyTodos={() => <EmptyTodos />}
-        onEmptySearchResult={()=> 
+        onEmptySearchResult={ 
           (searchText) =><p>no hay resultados para {searchText}</p>
         }
-
-        render={todo => (
+// render={todo => (
+        //   <TodoItem
+        //     key={todo.text}
+        //     text={todo.text}
+        //     completed={todo.completed}
+        //     onComplete={() => completeTodo(todo.text)}
+        //     onDelete={() => deleteTodo(todo.text)}
+        //   />
+        // )}
+        >
+        {todo => (
           <TodoItem
             key={todo.text}
             text={todo.text}
-            date={todo.date}
             completed={todo.completed}
             onComplete={() => completeTodo(todo.text)}
             onDelete={() => deleteTodo(todo.text)}
           />
-        )
-
-        }
-
-      />
-
+        )}
+      </TodoList>
 
 
       {/* <TodoList>

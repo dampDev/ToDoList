@@ -1,3 +1,6 @@
 .TodoCounter-Title{
     text-align: center;
 }
+.TodoCounter--loading{
+    opacity: 25%;
+}
