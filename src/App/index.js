@@ -9,6 +9,7 @@ import { EmptyTodos } from "../EmptyTodos"
 import { TodoItem } from "../TodoItem";
 import { TodoList } from "../TodoList";
 import { TodoSearch } from "../TodoSearch";
+import { Example } from "../TodoTab";
 import { Modal } from "../modal";
 import { TodoForm } from "../TodoForm";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
@@ -16,8 +17,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import esLocale from 'date-fns/locale/es';
 import { alpha } from '@material-ui/core/styles'
 
-import '../index.css';
-import './App.css';
+
 
 // const defaultTodos = [
 // {text: 'reparar pc', completed: true},
@@ -60,6 +60,7 @@ function App(props) {
       <h1 className="text-3xl font-bold underline bg-red-400">
       Hello world !
     </h1>
+    <Example/>
       <TodoHeader>
         <TodoCounter
           totalTodos={totalTodos}

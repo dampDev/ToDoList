@@ -21,7 +21,7 @@ function TodoItem(props) {
                 <p className="TodoItem-date">{props.date}</p>
             </div>
 
-            <span className="Icon Icon-delete"
+            <span className="  Icon Icon-delete"
                 onClick={props.onDelete}
             >
                 <FaTrashAlt/>
