@@ -12,6 +12,7 @@ import { TodoSearch } from "../TodoSearch";
 import { Example } from "../TodoTab";
 import { Modal } from "../modal";
 import { TodoForm } from "../TodoForm";
+import { ChangeAlert } from "../ChangeAlert";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 import esLocale from 'date-fns/locale/es';
@@ -46,6 +47,7 @@ function App(props) {
     searchValue,
     setSearchValue,
     addTodo,
+    sincronizeTodos
   } = useTodos();
 
   const [showAll, setShowAll] = React.useState(true);
@@ -157,6 +159,10 @@ function App(props) {
 
       <CreateTodoButtom
         setOpenModal={setOpenModal}
+      />
+
+      <ChangeAlert
+      sincronize={sincronizeTodos}
       />
     </React.Fragment>
   );
