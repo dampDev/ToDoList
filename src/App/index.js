@@ -49,11 +49,7 @@ function App(props) {
     sincronizeTodos
   } = useTodos();
 
-  const [showAll, setShowAll] = React.useState(true);
-  const handleShowAll = () => {
-    setShowAll(() => !showAll)
-  }
-
+  
 
 
   return (
@@ -73,9 +69,7 @@ function App(props) {
           // loading={loading}
         />
       </TodoHeader>
-      <button onClick={handleShowAll} className="rounded-xl h-7 text-orange-600	 bg-sky-500 hover:bg-sky-700">
-        {showAll ? "mostrar completados" : "Mostrar No Todos"}
-      </button>
+     
       {!!openModal && (
         <Modal>
           <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale} style={alpha}>
@@ -115,6 +109,7 @@ function App(props) {
           <TodoItem
             key={todo.text}
             text={todo.text}
+            date={todo.date}
             completed={todo.completed}
             onComplete={() => completeTodo(todo.text)}
             onDelete={() => deleteTodo(todo.text)}

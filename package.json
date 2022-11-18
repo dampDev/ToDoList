@@ -18,7 +18,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "prestart": "npx tailwindcss -i ./src/index.css -o ./src/css/tailwind.css",
+    
     "start": "react-scripts --openssl-legacy-provider start ",
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",

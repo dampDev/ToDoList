@@ -3,9 +3,20 @@ import './Todolist.css'
 
 function TodoList(props) {
     const renderFunt = props.children || props.render;
+
+    const [showAll, setShowAll] = React.useState(true);
+    const handleShowAll = () => {
+        setShowAll(() => !showAll)
+      }
+ 
+
     return(
+        
         <section className="TodoListMain">
             <div className="TodoList">
+            <button onClick={handleShowAll} className="rounded-xl h-7 text-orange-600	 bg-sky-500 hover:bg-sky-700">
+        {showAll ? "mostrar completados" : "Mostrar Pendientes"}
+      </button>
             {props.error && props.onError()}
             {props.loading && props.onLoading()}
 
@@ -14,8 +25,18 @@ function TodoList(props) {
 
         {/* {props.searchedTodos.map(todo =>props.render(todo))} */}
 
+
+        {(!props.loading && !props.error) && props.searchedTodos
+        .filter(todo => {
             
-        {(!props.loading && !props.error) && props.searchedTodos.map(renderFunt)}
+            if (showAll === false) {
+              return todo.completed === true;
+              
+           }else{
+            return todo.completed === false;
+           }
+          })
+        .map(renderFunt)}
 
 
 
