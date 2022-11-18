@@ -11,7 +11,7 @@ function useStorageListener(sincronize) {
         }
     });
 
-    const toogleShow =()=>{
+    const toggleShow =()=>{
         sincronize();
         setStorageChange(false);
     }
@@ -19,7 +19,7 @@ function useStorageListener(sincronize) {
         return {
             
                 show: storageChange,
-                toogleShow,
+                toggleShow,
         };
     }
 

@@ -9,7 +9,6 @@ import { EmptyTodos } from "../EmptyTodos"
 import { TodoItem } from "../TodoItem";
 import { TodoList } from "../TodoList";
 import { TodoSearch } from "../TodoSearch";
-import { Example } from "../TodoTab";
 import { Modal } from "../modal";
 import { TodoForm } from "../TodoForm";
 import { ChangeAlert } from "../ChangeAlert";
@@ -59,10 +58,8 @@ function App(props) {
 
   return (
     <React.Fragment>
-      <h1 className="text-1xl font-bold bg-red-500 text-orange-600">
-      Hello world !
-    </h1>
-    <Example/>
+      
+   
       <TodoHeader  loading={loading}>
         <TodoCounter
           totalTodos={totalTodos}
@@ -114,6 +111,7 @@ function App(props) {
         // )}
         >
         {todo => (
+          
           <TodoItem
             key={todo.text}
             text={todo.text}

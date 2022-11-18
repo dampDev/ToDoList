@@ -30,13 +30,13 @@ function useStorageListener(sincronize) {
     }
   });
 
-  var toogleShow = function toogleShow() {
+  var toggleShow = function toggleShow() {
     sincronize();
     setStorageChange(false);
   };
 
   return {
     show: storageChange,
-    toogleShow: toogleShow
+    toggleShow: toggleShow
   };
 }
