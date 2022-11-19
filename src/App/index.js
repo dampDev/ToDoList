@@ -9,7 +9,7 @@ import { EmptyTodos } from "../EmptyTodos"
 import { TodoItem } from "../TodoItem";
 import { TodoList } from "../TodoList";
 import { TodoSearch } from "../TodoSearch";
-import { Modal } from "../modal";
+// import { Modal } from "../modal";
 import { TodoForm } from "../TodoForm";
 import { ChangeAlert } from "../ChangeAlert";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
@@ -69,8 +69,8 @@ function App(props) {
           // loading={loading}
         />
       </TodoHeader>
-     
-      {!!openModal && (
+      
+      {/* {!!openModal && (
         <Modal>
           <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale} style={alpha}>
             <TodoForm
@@ -80,7 +80,7 @@ function App(props) {
           </MuiPickersUtilsProvider>
 
         </Modal>
-      )}
+      )} */}
 
       <TodoList
         error={error}
@@ -116,6 +116,18 @@ function App(props) {
           />
         )}
       </TodoList>
+      {!!openModal && (
+        
+        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale} style={alpha}>
+          <TodoForm
+            addTodo={addTodo}
+            setOpenModal={setOpenModal}
+          />
+        </MuiPickersUtilsProvider>
+
+      
+    )}
+   
 
 
       {/* <TodoList>

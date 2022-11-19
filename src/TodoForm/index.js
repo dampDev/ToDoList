@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import './TodoForm.css'
+import {FaRegCalendarAlt} from 'react-icons/fa'
 
 import {DatePicker} from '@material-ui/pickers';
 
@@ -23,15 +25,23 @@ function TodoForm({addTodo,setOpenModal}) {
 
     }
     return(
-        <form onSubmit={onSutmit}>
-            <label>fecha</label>
-            <DatePicker value={fechaSeleccionada} onChange={cambiarFechaSeleccionada}/>
-            <label>...</label>
+        <form onSubmit={onSutmit} className="form-container" >
+            <label>........</label>
             <textarea
+            className="form-textArea"
             value={newTodoValue}
             onChange={onChange}
             placeholder="Escribe tu tarea"
             />
+            <div className="calender-container">
+            <FaRegCalendarAlt/>
+            <DatePicker 
+            className="Datepicker"
+            value={fechaSeleccionada} 
+            onChange={cambiarFechaSeleccionada}/>
+            </div>
+            
+            
             <div>
                 <button 
                 type="button"

@@ -1,0 +1,17 @@
+.form-container{
+    width: 100%;
+    background: yellowgreen;
+    position: fixed;
+   bottom: 0vh;
+}
+
+.calender-container{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    color: white;
+}
+
+.Datepicker{
+    color: white !important; 
+}
