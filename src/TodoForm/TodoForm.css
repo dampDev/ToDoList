@@ -22,7 +22,9 @@
     border-bottom: 2px solid #ceced3;
 }
 .form-textArea{
+    width: 100%;
 border: 0;
+outline: none;
 }
 
 .form-textArea::placeholder{

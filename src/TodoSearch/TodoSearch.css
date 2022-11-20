@@ -20,6 +20,7 @@
     height: 85%;
     background-color: transparent;
     border: none;    
+    outline: none;
 }
 
 .TodoSearchInput:disabled{
