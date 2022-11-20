@@ -68,6 +68,19 @@ function App(props) {
           setSearchValue={setSearchValue}
           // loading={loading}
         />
+
+{!!openModal && (
+        
+        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale} style={alpha}>
+          <TodoForm
+            addTodo={addTodo}
+            setOpenModal={setOpenModal}
+          />
+        </MuiPickersUtilsProvider>
+
+      
+    )}
+
       </TodoHeader>
       
       {/* {!!openModal && (
@@ -116,17 +129,7 @@ function App(props) {
           />
         )}
       </TodoList>
-      {!!openModal && (
-        
-        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale} style={alpha}>
-          <TodoForm
-            addTodo={addTodo}
-            setOpenModal={setOpenModal}
-          />
-        </MuiPickersUtilsProvider>
-
       
-    )}
    
 
 

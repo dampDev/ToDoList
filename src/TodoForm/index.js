@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import './TodoForm.css'
-import {FaRegCalendarAlt} from 'react-icons/fa'
-
+import {FaRegCalendarAlt,FaRegCircle} from 'react-icons/fa'
 import {DatePicker} from '@material-ui/pickers';
 
 
@@ -26,33 +25,37 @@ function TodoForm({addTodo,setOpenModal}) {
     }
     return(
         <form onSubmit={onSutmit} className="form-container" >
-            <label>........</label>
+            <div className="textArea-container">
+            <label><FaRegCircle /></label>
             <textarea
             className="form-textArea"
             value={newTodoValue}
             onChange={onChange}
             placeholder="Escribe tu tarea"
             />
+            </div>
+            
             <div className="calender-container">
             <FaRegCalendarAlt/>
             <DatePicker 
             className="Datepicker"
             value={fechaSeleccionada} 
             onChange={cambiarFechaSeleccionada}/>
-            </div>
-            
-            
             <div>
-                <button 
+                {/* <button 
                 type="button"
                 onClick={onCancel}>
                     Cancelar
-                </button>
-                <button
+                </button> */}
+                <button className="submit-button"
                 type="submit">
-                    Anadit ToDo
+                    Add
                 </button>
             </div>
+            </div>
+            
+            
+        
         </form>
     )
 }

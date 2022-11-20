@@ -14,9 +14,9 @@ function TodoList(props) {
         
         <section className="TodoListMain">
             <div className="TodoList">
-            <button onClick={handleShowAll} className="rounded-xl h-7 text-orange-600	 bg-sky-500 hover:bg-sky-700">
+            {/* <button onClick={handleShowAll} className="rounded-xl h-7 text-orange-600	 bg-sky-500 hover:bg-sky-700">
         {showAll ? "mostrar completados" : "Mostrar Pendientes"}
-      </button>
+      </button> */}
             {props.error && props.onError()}
             {props.loading && props.onLoading()}
 
@@ -27,15 +27,15 @@ function TodoList(props) {
 
 
         {(!props.loading && !props.error) && props.searchedTodos
-        .filter(todo => {
+        // .filter(todo => {
             
-            if (showAll === false) {
-              return todo.completed === true;
+        //     if (showAll === false) {
+        //       return todo.completed === true;
               
-           }else{
-            return todo.completed === false;
-           }
-          })
+        //    }else{
+        //     return todo.completed === false;
+        //    }
+        //   })
         .map(renderFunt)}
 
 

@@ -1,5 +1,7 @@
 import React from "react";
 import './TodoSearch.css'
+import { FaSearch} from "react-icons/fa"
+
 
 function TodoSearch({searchValue, setSearchValue,loading}) {
     
@@ -13,6 +15,7 @@ function TodoSearch({searchValue, setSearchValue,loading}) {
 
     return (
         <div className="TodoSearchMain">
+            <FaSearch/>
             <input 
             className="TodoSearchInput" placeholder="Ejemplo"
             value={searchValue}
