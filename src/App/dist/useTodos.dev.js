@@ -67,8 +67,11 @@ function useTodos() {
     newTodos.push({
       completed: false,
       date: fecha,
-      text: text
+      text: text,
+      id: 8
     });
+    var resultado = Math.max(todos);
+    console.log("resultado", resultado);
     saveTodos(newTodos);
   };
 

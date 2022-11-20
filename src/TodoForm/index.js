@@ -13,9 +13,9 @@ function TodoForm({addTodo,setOpenModal}) {
         setNewTodoValue(event.target.value);
     };
 
-    const onCancel=()=>{
-            setOpenModal(false);
-    }
+    // const onCancel=()=>{
+    //         setOpenModal(false);
+    // }
     const onSutmit=(event)=>{
         event.preventDefault();
         addTodo(fechaSeleccionada.toLocaleDateString(), newTodoValue);
@@ -36,22 +36,25 @@ function TodoForm({addTodo,setOpenModal}) {
             </div>
             
             <div className="calender-container">
-            <FaRegCalendarAlt/>
-            <DatePicker 
-            className="Datepicker"
-            value={fechaSeleccionada} 
-            onChange={cambiarFechaSeleccionada}/>
-            <div>
-                {/* <button 
-                type="button"
-                onClick={onCancel}>
-                    Cancelar
-                </button> */}
-                <button className="submit-button"
-                type="submit">
-                    Add
-                </button>
-            </div>
+                <div className="calender">
+                    <FaRegCalendarAlt/>
+                    <DatePicker 
+                    className="Datepicker"
+                    value={fechaSeleccionada} 
+                    onChange={cambiarFechaSeleccionada}/>
+                </div>
+                
+                <div className="button-container">
+                    {/* <button 
+                    type="button"
+                    onClick={onCancel}>
+                        Cancelar
+                    </button> */}
+                    <button className="submit-button"
+                    type="submit">
+                        Agregar
+                    </button>
+                </div>
             </div>
             
             

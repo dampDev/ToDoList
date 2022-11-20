@@ -4,10 +4,10 @@ import './Todolist.css'
 function TodoList(props) {
     const renderFunt = props.children || props.render;
 
-    const [showAll, setShowAll] = React.useState(true);
-    const handleShowAll = () => {
-        setShowAll(() => !showAll)
-      }
+    const [showAll] = React.useState(true);
+    // const handleShowAll = () => {
+    //     setShowAll(() => !showAll)
+    //   }
  
 
     return(
@@ -27,15 +27,15 @@ function TodoList(props) {
 
 
         {(!props.loading && !props.error) && props.searchedTodos
-        // .filter(todo => {
+        .filter(todo => {
             
-        //     if (showAll === false) {
-        //       return todo.completed === true;
+        if (showAll === false) {
+        return todo.completed === true;
               
-        //    }else{
-        //     return todo.completed === false;
-        //    }
-        //   })
+        }else{
+        return todo.completed === false;
+            }
+           })
         .map(renderFunt)}
 
 
@@ -50,4 +50,62 @@ function TodoList(props) {
     
 }
 
-export  {TodoList};
+function TodoListComplet(props) {
+    const renderFunt = props.children || props.render;
+
+    const [showAll] = React.useState(false);
+    // const handleShowAll = () => {
+    //     setShowAll(() => !showAll)
+    //   }
+ 
+
+    return(
+        
+        <section className="TodoListMain">
+            <div className="TodoList">
+            {/* <button onClick={handleShowAll} className="rounded-xl h-7 text-orange-600	 bg-sky-500 hover:bg-sky-700">
+        {showAll ? "mostrar completados" : "Mostrar Pendientes"}
+      </button> */}
+            {props.error && props.onError()}
+            {props.loading && props.onLoading()}
+
+        {(!props.loading && !props.totalTodos) && props.onEmptyTodos()}
+        {(!!props.totalTodos && !props.searchedTodos.length) && props.onEmptySearchResult(props.searchText)}
+        
+        {/* {props.searchedTodos.map(todo =>props.render(todo))} */}
+
+
+        {(!props.loading && !props.error) && props.searchedTodos
+        .filter(todo => {
+            
+        if (showAll === false) {
+        return todo.completed === true  ;
+        
+              
+        }else{
+        return todo.completed === false ;
+            }
+
+            if (todo.completed === true){
+                return <p>completados</p>
+            }
+           })
+           
+        .map(renderFunt)}
+        
+
+            <p>render </p>
+
+            <ul className="TodoList">
+                {props.children}
+            </ul>
+            </div>
+           
+        </section>
+    );
+    
+}
+
+
+
+export  {TodoList,TodoListComplet};

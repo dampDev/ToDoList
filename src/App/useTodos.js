@@ -39,7 +39,11 @@ const{
         completed: false,
         date: fecha,
         text,
+        id:8,
+        
       });
+      const resultado = Math.max(todos);
+      console.log("resultado", resultado);
       saveTodos(newTodos);
     }
 

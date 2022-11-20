@@ -41,10 +41,22 @@ outline: none;
     gap: 5px;
     color: black;
     align-items: center;
+    justify-content: space-between;
+
+}
+
+.calender{
+    display:flex ;
+    gap:10px;
+    align-items: center;
 }
 
 .Datepicker{
     color: white !important; 
+}
+
+.button-container{
+    /* padding-left: 10vh; */
 }
 
 .submit-button{

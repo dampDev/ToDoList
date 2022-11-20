@@ -7,7 +7,7 @@ import { TodosLoading } from "../TodosLoading"
 import { TodosError } from "../TodosError"
 import { EmptyTodos } from "../EmptyTodos"
 import { TodoItem } from "../TodoItem";
-import { TodoList } from "../TodoList";
+import { TodoList,TodoListComplet} from "../TodoList";
 import { TodoSearch } from "../TodoSearch";
 // import { Modal } from "../modal";
 import { TodoForm } from "../TodoForm";
@@ -107,6 +107,7 @@ function App(props) {
         onEmptySearchResult={ 
           (searchText) =><p>no hay resultados para {searchText}</p>
         }
+        
 // render={todo => (
         //   <TodoItem
         //     key={todo.text}
@@ -129,6 +130,36 @@ function App(props) {
           />
         )}
       </TodoList>
+      
+      <TodoListComplet
+          
+
+        error={error}
+        loading={loading}
+        searchedTodos={searchedTodos}
+        totalTodos={totalTodos}
+        searchText={searchValue}
+        onError={() => <TodosError />}
+        onLoading={() => <TodosLoading />}
+        onEmptyTodos={() => <EmptyTodos />}
+        onEmptySearchResult={ 
+          (searchText) =><p>no hay resultados para {searchText}</p>
+        }
+        
+        >
+          
+        {todo => (
+                    
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            date={todo.date}
+            completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        )}
+      </TodoListComplet>
       
    
 
