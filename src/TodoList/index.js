@@ -68,9 +68,12 @@ function TodoListComplet(props) {
       </button> */}
             {props.error && props.onError()}
             {props.loading && props.onLoading()}
+            {!props.searchedTodos && props.onTodocompleted()} 
+            
 
         {(!props.loading && !props.totalTodos) && props.onEmptyTodos()}
         {(!!props.totalTodos && !props.searchedTodos.length) && props.onEmptySearchResult(props.searchText)}
+        
         
         {/* {props.searchedTodos.map(todo =>props.render(todo))} */}
 
@@ -86,9 +89,6 @@ function TodoListComplet(props) {
         return todo.completed === false ;
             }
 
-            if (todo.completed === true){
-                return <p>completados</p>
-            }
            })
            
         .map(renderFunt)}

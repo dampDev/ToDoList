@@ -4,6 +4,7 @@ import { CreateTodoButtom } from "../CreateTodoButtom";
 import { TodoHeader } from "../TodoHeader";
 import { TodoCounter } from "../TodoCounter";
 import { TodosLoading } from "../TodosLoading"
+import {TodoCompleted} from "../TodoCompleted"
 import { TodosError } from "../TodosError"
 import { EmptyTodos } from "../EmptyTodos"
 import { TodoItem } from "../TodoItem";
@@ -55,7 +56,7 @@ function App(props) {
   return (
     <React.Fragment>
       
-   
+      
       <TodoHeader  loading={loading}>
         <TodoCounter
           totalTodos={totalTodos}
@@ -108,6 +109,7 @@ function App(props) {
           (searchText) =><p>no hay resultados para {searchText}</p>
         }
         
+        
 // render={todo => (
         //   <TodoItem
         //     key={todo.text}
@@ -142,9 +144,11 @@ function App(props) {
         onError={() => <TodosError />}
         onLoading={() => <TodosLoading />}
         onEmptyTodos={() => <EmptyTodos />}
+        onTodocompleted={()=><TodoCompleted/>}
         onEmptySearchResult={ 
           (searchText) =><p>no hay resultados para {searchText}</p>
         }
+        
         
         >
           
