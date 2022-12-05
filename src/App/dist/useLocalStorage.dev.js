@@ -18,25 +18,20 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function useLocalStorage(itemName, initialValue) {
-  var _React$useState = _react.default.useState(true),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      sincronizedItem = _React$useState2[0],
-      setSincronizedItem = _React$useState2[1];
+  var _React$useReducer = _react.default.useReducer(reducer, initialState({
+    initialValue: initialValue
+  })),
+      _React$useReducer2 = _slicedToArray(_React$useReducer, 2),
+      state = _React$useReducer2[0],
+      dispatch = _React$useReducer2[1];
 
-  var _React$useState3 = _react.default.useState(false),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      error = _React$useState4[0],
-      setError = _React$useState4[1];
-
-  var _React$useState5 = _react.default.useState(true),
-      _React$useState6 = _slicedToArray(_React$useState5, 2),
-      loading = _React$useState6[0],
-      setLoading = _React$useState6[1];
-
-  var _React$useState7 = _react.default.useState(initialValue),
-      _React$useState8 = _slicedToArray(_React$useState7, 2),
-      item = _React$useState8[0],
-      setItem = _React$useState8[1];
+  var sincronizedItem = state.sincronizedItem,
+      error = state.error,
+      loading = state.loading,
+      item = state.item; // const [sincronizedItem, setSincronizedItem ]   = React.useState(true);
+  // const [error, setError] = React.useState(false);
+  //   const [loading, setLoading] = React.useState(true);
+  //   const[item, setItem] = React.useState(initialValue);
 
   _react.default.useEffect(function () {
     setTimeout(function () {
@@ -83,3 +78,25 @@ function useLocalStorage(itemName, initialValue) {
     sincronizeItem: sincronizeItem
   };
 }
+
+var initialState = function initialState(_ref) {
+  var initialValue = _ref.initialValue;
+  return {
+    sincronizedItem: true,
+    error: false,
+    loading: true,
+    item: initialValue
+  };
+};
+
+var actionTypes = {
+  error: 'ERORR'
+};
+
+var reducerOnject = function reducerOnject(state, payload) {
+  return {};
+};
+
+var reducer = function reducer(state, action) {
+  reducerOnject(state, action.payload)[action.type] || state;
+};

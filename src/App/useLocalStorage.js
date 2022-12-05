@@ -1,9 +1,18 @@
 import React from "react";
 function useLocalStorage(itemName, initialValue){
-  const [sincronizedItem, setSincronizedItem ]   = React.useState(true);
-  const [error, setError] = React.useState(false);
-    const [loading, setLoading] = React.useState(true);
-    const[item, setItem] = React.useState(initialValue);
+  const [state, dispatch] = React.useReducer(reducer, initialState({initialValue}));
+
+  const {
+    sincronizedItem,
+    error,
+    loading,
+    item
+  } = state;
+  
+  // const [sincronizedItem, setSincronizedItem ]   = React.useState(true);
+  // const [error, setError] = React.useState(false);
+  //   const [loading, setLoading] = React.useState(true);
+  //   const[item, setItem] = React.useState(initialValue);
    
     React.useEffect(()=>{
       setTimeout(()=>{
@@ -23,7 +32,9 @@ function useLocalStorage(itemName, initialValue){
         setItem(parsedItem);
         setLoading(false);
         setSincronizedItem(true);
+
         } catch(error){
+
           setError(error);
         }
       },3000);
@@ -55,6 +66,26 @@ function useLocalStorage(itemName, initialValue){
 
    };
  
+ }
+
+ const initialState =({initialValue})=>({
+  sincronizedItem:true,
+    error:false,
+    loading: true,
+    item: initialValue,
+ });
+
+ const actionTypes = {
+  error : 'ERORR',
+
+ };
+
+ const reducerOnject =(state, payload) => ({
+
+ });
+
+ const reducer = (state, action) => {
+  reducerOnject(state, action.payload)[action.type] || state;
  }
 
  export {useLocalStorage};
