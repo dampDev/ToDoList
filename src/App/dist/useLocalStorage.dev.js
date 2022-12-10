@@ -9,6 +9,12 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -28,10 +34,34 @@ function useLocalStorage(itemName, initialValue) {
   var sincronizedItem = state.sincronizedItem,
       error = state.error,
       loading = state.loading,
-      item = state.item; // const [sincronizedItem, setSincronizedItem ]   = React.useState(true);
-  // const [error, setError] = React.useState(false);
-  //   const [loading, setLoading] = React.useState(true);
-  //   const[item, setItem] = React.useState(initialValue);
+      item = state.item;
+
+  var onError = function onError(error) {
+    return dispatch({
+      type: actionTypes.error,
+      payload: error
+    });
+  };
+
+  var onSeccess = function onSeccess(item) {
+    return dispatch({
+      type: actionTypes.success,
+      payload: item
+    });
+  };
+
+  var onSave = function onSave(item) {
+    return dispatch({
+      type: actionTypes.save,
+      payload: item
+    });
+  };
+
+  var onSincronize = function onSincronize() {
+    return dispatch({
+      type: actionTypes.sincronize
+    });
+  };
 
   _react.default.useEffect(function () {
     setTimeout(function () {
@@ -46,11 +76,11 @@ function useLocalStorage(itemName, initialValue) {
           parsedItem = JSON.parse(localStorageItem);
         }
 
-        setItem(parsedItem);
-        setLoading(false);
-        setSincronizedItem(true);
+        onSeccess(parsedItem); // setItem(parsedItem);
+        // setLoading(false);
+        // setSincronizedItem(true);
       } catch (error) {
-        setError(error);
+        onError(error);
       }
     }, 3000);
   }, [sincronizedItem]);
@@ -59,15 +89,14 @@ function useLocalStorage(itemName, initialValue) {
     try {
       var stringifiedItem = JSON.stringify(newItem);
       localStorage.setItem(itemName, stringifiedItem);
-      setItem(newItem);
+      onSave(newItem);
     } catch (error) {
-      setError(error);
+      onError(error);
     }
   };
 
   var sincronizeItem = function sincronizeItem() {
-    setLoading(true);
-    setSincronizedItem(false);
+    onSincronize();
   };
 
   return {
@@ -90,13 +119,30 @@ var initialState = function initialState(_ref) {
 };
 
 var actionTypes = {
-  error: 'ERORR'
+  error: 'ERORR',
+  success: 'SUCCESS',
+  save: 'SAVE',
+  sincronize: 'SINCRONIZE'
 };
 
 var reducerOnject = function reducerOnject(state, payload) {
-  return {};
+  var _ref2;
+
+  return _ref2 = {}, _defineProperty(_ref2, actionTypes.error, _objectSpread({}, state, {
+    error: true
+  })), _defineProperty(_ref2, actionTypes.success, _objectSpread({}, state, {
+    error: false,
+    loading: false,
+    sincronizedItem: true,
+    item: payload
+  })), _defineProperty(_ref2, actionTypes.save, _objectSpread({}, state, {
+    item: payload
+  })), _defineProperty(_ref2, actionTypes.sincronize, _objectSpread({}, state, {
+    sincronizedItem: false,
+    loading: true
+  })), _ref2;
 };
 
 var reducer = function reducer(state, action) {
-  reducerOnject(state, action.payload)[action.type] || state;
+  return reducerOnject(state, action.payload)[action.type] || state;
 };
